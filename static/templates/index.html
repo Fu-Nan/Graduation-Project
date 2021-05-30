@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安卓应用数据分析系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity=
+            "sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link href="/static/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">安卓应用数据分析系统</a>
+        </div>
+    </div>
+</nav>
+<p></p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 clo-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">综合评价最高的10款应用</div>
+                <div class="panel-body">
+                    <img src='{{data["plt"]}}' class="img-responsive img-thumbnail"/>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>应用名称</th>
+                        <th>版本号</th>
+                        <th>应用大小</th>
+                        <th>下载量</th>
+                        <th>推荐值数</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%for index, row in data["list"].iterrows() %}
+                    <td>{{ row["index"] }}</td>
+                    <td>{{ row["appName"] }}</td>
+                    <td>{{ row["version"] }}</td>
+                    <td>{{ row["size"] }}</td>
+                    <td>{{ row["download"] }}次</td>
+                    <td>{{ row["vote"] }}星</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+</body>
+</html>
